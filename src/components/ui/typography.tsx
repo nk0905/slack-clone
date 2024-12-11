@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { FC, HTMLAttributes } from 'react'
 
 type TypographyProps = {
@@ -22,7 +23,7 @@ const typography: FC<TypographyProps> = ({ variant = 'h1', text, className, ...p
   const combinedClassName = cn(defaultClassName, className);
 
   return (
-    <Tag>typography</Tag>
+    <Tag className={combinedClassName} {...props}>typography</Tag>
   )
 }
 
