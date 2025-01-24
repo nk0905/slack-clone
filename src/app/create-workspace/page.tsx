@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input';
 import Typography from '@/components/ui/typography';
 import { useCreateWorkspaceValues } from '@/hooks/create-workspace-values';
 import React, { useState } from 'react';
+import slugify from 'slugify';
+import { v4 as uuid } from 'uuid';
 
 const CreateWorkspace = () => {
   const { currStep } = useCreateWorkspaceValues();
