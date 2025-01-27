@@ -11,27 +11,27 @@ import {
 
 type Colors = 'blue' | 'green' | '';
 
-type ColorPrefrencesContext = {
+type ColorPreferencesContext = {
   color: Colors;
   selectColor: (color: Colors) => void;
 };
 
-const ColorPrefrencesContext = createContext<
-  ColorPrefrencesContext | undefined
+const ColorPreferencesContext = createContext<
+  ColorPreferencesContext | undefined
 >(undefined);
 
-export const useColorPrefrences = () => {
-  const context = useContext(ColorPrefrencesContext);
+export const useColorPreferences = () => {
+  const context = useContext(ColorPreferencesContext);
   if (!context) {
     throw new Error(
-      'useColorPrefrences must be used within a ColorPrefrencesProvider'
+      'useColorPreferences must be used within a ColorPreferencesProvider'
     );
   }
 
   return context;
 };
 
-export const ColorPrefrencesProvider: FC<{ children: ReactNode }> = ({
+export const ColorPreferencesProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [color, setColor] = useState<Colors>(() => {
@@ -50,7 +50,7 @@ export const ColorPrefrencesProvider: FC<{ children: ReactNode }> = ({
 
   const selectColor = (selectedColor: Colors) => setColor(selectedColor);
 
-  const value: ColorPrefrencesContext = {
+  const value: ColorPreferencesContext = {
     color,
     selectColor,
   };
@@ -58,8 +58,8 @@ export const ColorPrefrencesProvider: FC<{ children: ReactNode }> = ({
   if (!isMounted) return null;
 
   return (
-    <ColorPrefrencesContext.Provider value={value}>
+    <ColorPreferencesContext.Provider value={value}>
       {children}
-    </ColorPrefrencesContext.Provider>
+    </ColorPreferencesContext.Provider>
   );
 };
